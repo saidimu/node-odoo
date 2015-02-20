@@ -45,4 +45,9 @@ describe('Odoo', function () {
     assert.equal(typeof odoo.search, 'function');
   });
 
+  describe('Creating client', function () {
+    it('client should be able to connect to odoo server');
+    it('client should authenticate to odoo server');
+  });
+
 });
