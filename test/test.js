@@ -13,12 +13,15 @@ var odoo = new Odoo(config);
 
 describe('Odoo', function () {
 
-  it('Odoo should be a function and the client its instance', function () {
+  it('Odoo should be a function', function () {
     assert.equal(typeof Odoo, 'function');
+  });
+
+  it('odoo should be an instance of Odoo', function () {
     assert(odoo instanceof Odoo);
   });
 
-  it('Odoo should set properties to instance', function () {
+  it('odoo should have this properties', function () {
     assert.notEqual(odoo.host, undefined);
     assert.equal(odoo.host, config.host);
     assert.notEqual(odoo.port, undefined);
@@ -29,6 +32,17 @@ describe('Odoo', function () {
     assert.equal(odoo.username, config.username);
     assert.notEqual(odoo.password, undefined);
     assert.equal(odoo.password, config.password);
+  });
+
+  it('odoo should have this public functions', function () {
+    assert.equal(typeof odoo.createClient, 'function');
+    assert.equal(typeof odoo.auth, 'function');
+    assert.equal(typeof odoo.create, 'function');
+    assert.equal(typeof odoo.get, 'function');
+    assert.equal(typeof odoo.update, 'function');
+    assert.equal(typeof odoo.delete, 'function');
+    assert.equal(typeof odoo.list, 'function');
+    assert.equal(typeof odoo.search, 'function');
   });
 
 });
