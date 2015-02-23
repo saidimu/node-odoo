@@ -13,6 +13,7 @@ var config = {
 var odoo = new Odoo(config);
 
 describe('Odoo', function () {
+  this.timeout(3000);
 
   it('Odoo should be a function', function () {
     assert.equal(typeof Odoo, 'function');
@@ -46,7 +47,6 @@ describe('Odoo', function () {
   });
 
   describe('Creating client', function () {
-    this.timeout(3000);
 
     it('client should not be able to connect to odoo server', function (done) {
       var client = new Odoo({
@@ -88,7 +88,22 @@ describe('Odoo', function () {
 
   describe('Records', function () {
 
-    it('client should create a record');
+    it('client should create a record', function (done) {
+      var callback = sinon.spy();
+      odoo.create('hr.employee', {
+        name: 'John Doe',
+        work_email: 'john@doe.com'
+      }, callback);
+
+      setTimeout(function () {
+        assert(callback.calledWith(null));
+        assert.equal(typeof callback.args[0][1], 'number');
+
+        done();
+      }, 2000);
+
+    });
+
     it('client should get a record');
     it('client should update a record');
     it('client should delete a record');
