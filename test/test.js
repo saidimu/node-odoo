@@ -46,6 +46,10 @@ describe('Odoo', function () {
     assert.equal(typeof odoo.search, 'function');
   });
 
+  it('odoo should have this private functions', function () {
+    assert.equal(typeof odoo._request, 'function');
+  });
+
   describe('Creating client', function () {
 
     it('client should not be able to connect to odoo server', function (done) {
