@@ -83,6 +83,16 @@ describe('Odoo', function () {
       }, 2000);
     });
 
+  });
+
+  describe('Records', function () {
+
+    it('client should create a record');
+    it('client should get a record');
+    it('client should update a record');
+    it('client should delete a record');
+    it('client should list records');
+    it('client should search records');
 
   });
 
