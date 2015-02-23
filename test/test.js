@@ -77,6 +77,7 @@ describe('Odoo', function () {
         assert(callback.calledWith(null));
         assert.equal(typeof callback.args[0][1], 'object');
         assert.notEqual(odoo.uid, undefined);
+        assert.notEqual(odoo.sid, undefined);
         assert.notEqual(odoo.session_id, undefined);
 
         done();
