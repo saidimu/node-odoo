@@ -5,7 +5,7 @@ var assert = require('assert'),
 var config = {
   host: 'odoo4yopping.vagrantshare.com',
   port: 80,
-  database: '4yopping',
+  database: 'pruebas',
   username: 'admin',
   password: '4yopping'
 };
@@ -56,11 +56,13 @@ describe('Odoo', function () {
           }),
           callback = sinon.spy();
 
-      client.connect(callback);
+        client.connect(callback);
 
-      assert(callback.called);
-      assert.equal(typeof callback.args[0][0], 'object');
-      assert.equal(callback.args[0][1], null);
+        setTimeout(function () {
+          assert(callback.called);
+          assert.equal(typeof callback.args[0][0], 'object');
+          assert.equal(callback.args[0][1], null);
+        }, 1000);
     });
 
     it('client should be able to connect to odoo server', function () {
@@ -68,10 +70,12 @@ describe('Odoo', function () {
 
       odoo.connect(callback);
 
-      assert(callback.calledWith(null));
-      assert.equal(typeof callback.args[0][1], 'object');
-      assert(callback.args[0][1].uid);
-      assert(callback.args[0][1].session_id);
+      setTimeout(function () {
+        assert(callback.calledWith(null));
+        assert.equal(typeof callback.args[0][1], 'object');
+        assert.notEqual(callback.args[0][1].uid, undefined);
+        assert.notEqual(callback.args[0][1].session_id, undefined);
+      }, 1000);
     });
 
 
