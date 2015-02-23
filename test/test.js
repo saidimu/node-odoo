@@ -46,8 +46,9 @@ describe('Odoo', function () {
   });
 
   describe('Creating client', function () {
+    this.timeout(3000);
 
-    it('client should not be able to connect to odoo server', function () {
+    it('client should not be able to connect to odoo server', function (done) {
       var client = new Odoo({
             host: config.host,
             database: 'DatabaseNotFound',
@@ -62,10 +63,12 @@ describe('Odoo', function () {
           assert(callback.called);
           assert.equal(typeof callback.args[0][0], 'object');
           assert.equal(callback.args[0][1], null);
-        }, 1000);
+
+          done();
+        }, 2000);
     });
 
-    it('client should be able to connect to odoo server', function () {
+    it('client should be able to connect to odoo server', function (done) {
       var callback = sinon.spy();
 
       odoo.connect(callback);
@@ -73,9 +76,11 @@ describe('Odoo', function () {
       setTimeout(function () {
         assert(callback.calledWith(null));
         assert.equal(typeof callback.args[0][1], 'object');
-        assert.notEqual(callback.args[0][1].uid, undefined);
-        assert.notEqual(callback.args[0][1].session_id, undefined);
-      }, 1000);
+        assert.notEqual(odoo.uid, undefined);
+        assert.notEqual(odoo.session_id, undefined);
+
+        done();
+      }, 2000);
     });
 
 
