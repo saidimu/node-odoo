@@ -1,12 +1,13 @@
 var assert = require('assert'),
+    sinon  = require('sinon'),
     Odoo   = require('../lib/index');
 
 var config = {
-  host: 'http://odoo.domain.com',
+  host: 'odoo4yopping.vagrantshare.com',
   port: 80,
-  database: 'test',
+  database: '4yopping',
   username: 'admin',
-  password: '$72?392.2fhbd'
+  password: '4yopping'
 };
 
 var odoo = new Odoo(config);
@@ -35,8 +36,7 @@ describe('Odoo', function () {
   });
 
   it('odoo should have this public functions', function () {
-    assert.equal(typeof odoo.createClient, 'function');
-    assert.equal(typeof odoo.auth, 'function');
+    assert.equal(typeof odoo.connect, 'function');
     assert.equal(typeof odoo.create, 'function');
     assert.equal(typeof odoo.get, 'function');
     assert.equal(typeof odoo.update, 'function');
@@ -46,8 +46,35 @@ describe('Odoo', function () {
   });
 
   describe('Creating client', function () {
-    it('client should be able to connect to odoo server');
-    it('client should authenticate to odoo server');
+
+    it('client should not be able to connect to odoo server', function () {
+      var client = new Odoo({
+            host: config.host,
+            database: 'DatabaseNotFound',
+            username: config.username,
+            password: config.password
+          }),
+          callback = sinon.spy();
+
+      client.connect(callback);
+
+      assert(callback.called);
+      assert.equal(typeof callback.args[0][0], 'object');
+      assert.equal(callback.args[0][1], null);
+    });
+
+    it('client should be able to connect to odoo server', function () {
+      var callback = sinon.spy();
+
+      odoo.connect(callback);
+
+      assert(callback.calledWith(null));
+      assert.equal(typeof callback.args[0][1], 'object');
+      assert(callback.args[0][1].uid);
+      assert(callback.args[0][1].session_id);
+    });
+
+
   });
 
 });
