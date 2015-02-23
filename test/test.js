@@ -92,6 +92,8 @@ describe('Odoo', function () {
 
   describe('Records', function () {
 
+    var created;
+
     it('client should create a record', function (done) {
       var callback = sinon.spy();
       odoo.create('hr.employee', {
@@ -103,13 +105,43 @@ describe('Odoo', function () {
         assert(callback.calledWith(null));
         assert.equal(typeof callback.args[0][1], 'number');
 
+        created = callback.args[0][1];
+
         done();
       }, 2000);
 
     });
 
-    it('client should get a record');
-    it('client should update a record');
+    it('client should get a record', function (done) {
+      var callback = sinon.spy();
+      odoo.get('hr.employee', created, callback);
+
+      setTimeout(function () {
+        assert(callback.calledWith(null));
+        assert.equal(typeof callback.args[0][1], 'object');
+        assert.equal(callback.args[0][1].display_name, 'John Doe');
+        assert.equal(callback.args[0][1].work_email, 'john@doe.com');
+
+        done();
+      }, 2000);
+
+    });
+
+    it('client should update a record', function (done) {
+      var callback = sinon.spy();
+      odoo.update('hr.employee', created, {
+        name: 'Jane Doe',
+        work_email: 'jane@doe.com'
+      }, callback);
+
+      setTimeout(function () {
+        assert(callback.calledWith(null));
+        assert(callback.args[0][1]);
+
+        done();
+      }, 2000);
+    });
+
     it('client should delete a record');
     it('client should list records');
     it('client should search records');
