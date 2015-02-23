@@ -142,7 +142,18 @@ describe('Odoo', function () {
       }, 2000);
     });
 
-    it('client should delete a record');
+    it('client should delete a record', function (done) {
+      var callback = sinon.spy();
+      odoo.delete('hr.employee', created, callback);
+
+      setTimeout(function () {
+        assert(callback.calledWith(null));
+        assert(callback.args[0][1]);
+
+        done();
+      }, 2000);
+    });
+
     it('client should list records');
     it('client should search records');
 
