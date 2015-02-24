@@ -10,6 +10,7 @@ $ npm install node-odoo
 
 ## Methods
 
+### odoo.connect(callback)
 ### odoo.create(model, params, callback)
 ### odoo.get(model, id, callback)
 ### odoo.update(model, id, params, callback)
