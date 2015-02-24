@@ -2,6 +2,19 @@
 
 Node.js client library for Odoo using JSON-RPC
 
+## Installation
+
+```bash
+$ npm install node-odoo
+```
+
+## Methods
+
+### odoo.create(model, params, callback)
+### odoo.get(model, id, callback)
+### odoo.update(model, id, params, callback)
+### odoo.delete(model, id, callback)
+### odoo.search(model, params, callback)
 
 ## Reference
 
