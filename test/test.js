@@ -42,7 +42,6 @@ describe('Odoo', function () {
     assert.equal(typeof odoo.get, 'function');
     assert.equal(typeof odoo.update, 'function');
     assert.equal(typeof odoo.delete, 'function');
-    assert.equal(typeof odoo.list, 'function');
     assert.equal(typeof odoo.search, 'function');
   });
 
@@ -153,8 +152,6 @@ describe('Odoo', function () {
         done();
       }, 2000);
     });
-
-    it('client should list records');
 
     it('client should search records', function (done) {
       var callback = sinon.spy();
