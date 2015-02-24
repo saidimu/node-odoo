@@ -155,7 +155,18 @@ describe('Odoo', function () {
     });
 
     it('client should list records');
-    it('client should search records');
+
+    it('client should search records', function (done) {
+      var callback = sinon.spy();
+      odoo.search('hr.employee', [['login', '=', 'admin']], callback);
+
+      setTimeout(function () {
+        assert(callback.calledWith(null));
+        assert.equal(typeof callback.args[0][1], 'array');
+
+        done();
+      }, 2000);
+    });
 
   });
 
