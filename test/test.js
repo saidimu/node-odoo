@@ -5,7 +5,7 @@ var assert = require('assert'),
 var config = {
   host: 'odoo4yopping.vagrantshare.com',
   port: 80,
-  database: 'pruebas',
+  database: '4yopping',
   username: 'admin',
   password: '4yopping'
 };
@@ -79,9 +79,10 @@ describe('Odoo', function () {
       setTimeout(function () {
         assert(callback.calledWith(null));
         assert.equal(typeof callback.args[0][1], 'object');
-        assert.notEqual(odoo.uid, undefined);
-        assert.notEqual(odoo.sid, undefined);
-        assert.notEqual(odoo.session_id, undefined);
+        assert(odoo.uid);
+        assert(odoo.sid);
+        assert(odoo.session_id);
+        assert(odoo.context);
 
         done();
       }, 2000);
