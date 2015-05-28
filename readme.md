@@ -2,6 +2,9 @@
 
 Node.js client library for Odoo using JSON-RPC
 
+##Node version
+Works better with NodeJS v11.16 and further
+
 ## Installation
 
 ```bash
