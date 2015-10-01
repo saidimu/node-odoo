@@ -1,4 +1,4 @@
-# Node-Odoo
+# Odoo
 
 Node.js client library for Odoo using JSON-RPC
 
@@ -8,13 +8,13 @@ Works better with NodeJS v11.16 and further
 ## Installation
 
 ```bash
-$ npm install node-odoo
+$ npm install Odoo
 ```
 
 ## Usage
 
 ```js
-var Odoo = require('node-odoo');
+var Odoo = require('Odoo');
 
 var odoo = new Odoo({
   host: 'localhost',
