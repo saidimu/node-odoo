@@ -15,33 +15,59 @@ var Odoo = require('Odoo');
 
 var odoo = new Odoo({
   host: 'localhost',
-  port: 4569,
-  database: '4yopping',
+  port: 8069,
+  database: 'demo',
   username: 'admin',
-  password: '4yopping'
+  password: 'admin'
 });
 
 // Connect to Odoo
 odoo.connect(function (err) {
   if (err) { return console.log(err); }
+});
 
-  // Get a partner
-  odoo.get('res.partner', 4, function (err, partner) {
-    if (err) { return console.log(err); }
+// Get a partner
+// https://www.odoo.com/documentation/8.0/api_integration.html#read-records
+// https://www.odoo.com/documentation/8.0/reference/orm.html#openerp.models.Model.read
+var params = {
+  ids: [1,2,3,4,5],
+  fields: [ 'name' ],
+}; //params
+odoo.get('res.partner', params, function (err, partners) {
+  if (err) { return console.log(err); }
 
-    console.log('Partner', partner);
-  });
+  console.log(partners);
+});
+
+
+// Search & Get products in one RPC call
+// https://www.odoo.com/documentation/8.0/api_integration.html#search-and-read
+// https://www.odoo.com/documentation/8.0/reference/orm.html#openerp.models.Model.search
+// https://www.odoo.com/documentation/8.0/reference/orm.html#openerp.models.Model.read
+var params = {
+  ids: [1,2,3,4,5],
+  domain: [ [ 'list_price', '>', '50' ], [ 'list_price', '<', '65' ] ],
+  fields: [ 'name', 'list_price', 'items' ],
+  order: 'list_price',
+  limit: 5,
+  offset: 0,  
+}; //params
+odoo.get('product.product', params, function (err, products) {
+  if (err) { return console.log(err); }
+
+  console.log(products);
 });
 ```
 
 ## Methods
 
 * odoo.connect(callback)
-* odoo.create(model, params, callback)
 * odoo.get(model, id, callback)
+* odoo.search(model, params, callback)
+* odoo.search_read(model, params, callback)
+* odoo.create(model, params, callback)
 * odoo.update(model, id, params, callback)
 * odoo.delete(model, id, callback)
-* odoo.search(model, params, callback)
 
 ##Node version
 Works better with NodeJS v11.16 and further
