@@ -1,9 +1,6 @@
 # Odoo
 
-Node.js client library for Odoo using JSON-RPC
-
-##Node version
-Works better with NodeJS v11.16 and further
+Node.js client library for Odoo
 
 ## Installation
 
@@ -39,12 +36,15 @@ odoo.connect(function (err) {
 
 ## Methods
 
-### odoo.connect(callback)
-### odoo.create(model, params, callback)
-### odoo.get(model, id, callback)
-### odoo.update(model, id, params, callback)
-### odoo.delete(model, id, callback)
-### odoo.search(model, params, callback)
+* odoo.connect(callback)
+* odoo.create(model, params, callback)
+* odoo.get(model, id, callback)
+* odoo.update(model, id, params, callback)
+* odoo.delete(model, id, callback)
+* odoo.search(model, params, callback)
+
+##Node version
+Works better with NodeJS v11.16 and further
 
 ## Reference
 
