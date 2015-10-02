@@ -37,6 +37,12 @@ odoo.get('res.partner', params, function (err, partners) {
   if (err) { return console.log(err); }
 
   console.log(partners);
+// [
+//   { id: 1, name: 'Demo Company' },
+//   { id: 3, name: 'Administrator' },
+//   { id: 4, name: 'Public user' },
+//   { id: 5, name: 'Demo User' }
+// ]
 });
 
 
@@ -52,11 +58,17 @@ var params = {
   limit: 5,
   offset: 0,  
 }; //params
-odoo.get('product.product', params, function (err, products) {
+odoo.search_read('product.product', params, function (err, products) {
   if (err) { return console.log(err); }
 
   console.log(products);
+// [
+//   { list_price: 60, id: 52, name: 'Router R430' },
+//   { list_price: 62, id: 39, name: 'Headset standard' }
+// ]
+
 });
+
 ```
 
 ## Methods
