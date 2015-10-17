@@ -1,6 +1,6 @@
 {
   "name": "odoo",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Node.js client library for Odoo using JSON-RPC",
   "main": "./lib/index.js",
   "directories": {
