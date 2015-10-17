@@ -43,7 +43,7 @@ odoo.get('res.partner', params, function (err, partners) {
 //   { id: 4, name: 'Public user' },
 //   { id: 5, name: 'Demo User' }
 // ]
-});
+}); //get
 
 
 // Search & Get products in one RPC call
@@ -67,7 +67,29 @@ odoo.search_read('product.product', params, function (err, products) {
 //   { list_price: 62, id: 39, name: 'Headset standard' }
 // ]
 
-});
+}); //search_read
+
+
+// Browse products by ID
+// Not a direct implementation of Odoo RPC 'browse' but rather a workaround based on 'search_read'
+// https://www.odoo.com/documentation/8.0/reference/orm.html#openerp.models.Model.browse
+var params = {
+  fields: [ 'name', 'list_price'],
+  limit: 5,
+  offset: 0,  
+}; //params
+odoo.browse_by_id('product.product', params, function (err, products) {
+  if (err) { return console.log(err); }
+
+  console.log(products);
+// [
+//   { list_price: 4.49, id: 1180, name: 'Fruit Cup' },
+//   { list_price: 0, id: 1139, name: 'Orange Crush' },
+//   { list_price: 1.59, id: 1062, name: 'Blueberry muffin' },
+//   { list_price: 1.35, id: 1381, name: 'Otis Harvest Bran' }
+// ]
+}); //browse_by_id
+
 
 ```
 
@@ -77,6 +99,7 @@ odoo.search_read('product.product', params, function (err, products) {
 * odoo.get(model, id, callback)
 * odoo.search(model, params, callback)
 * odoo.search_read(model, params, callback)
+* odoo.browse_by_id(model, params, callback)
 * odoo.create(model, params, callback)
 * odoo.update(model, id, params, callback)
 * odoo.delete(model, id, callback)
