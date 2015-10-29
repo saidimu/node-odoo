@@ -1,0 +1,19 @@
+{
+    "curly": false,
+    "eqeqeq": false,
+    "indent": false,
+    "newcap": false,
+    "plusplus": false,
+    "quotmark": false,
+    "unused": false,
+    "strict": false,
+    "trailing": false,
+    "maxstatements": false,
+    "maxlen": false,
+
+    "eqnull": true,
+    "smarttabs": true,
+
+    "browser": true,
+    "node": true
+}
