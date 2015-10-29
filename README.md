@@ -91,6 +91,40 @@ odoo.browse_by_id('product.product', params, function (err, products) {
 }); //browse_by_id
 
 
+// Generic RPC call
+// Note that, unlike the other methods, the context is not automatically included
+var endpoint = '/web/dataset/call_kw';
+var model = 'sale.order';
+var method = 'action_view_delivery';
+
+var args = [
+  [sale_order_id],
+  {
+    tz: odoo.context.tz,
+    uid: odoo.context.uid,
+  },
+];//args
+
+var params = {
+  model: model,
+  method: method,
+  args: args,
+  kwargs: {},
+};//params
+
+// View Delivery Order
+odoo.rpc_call(endpoint, params, function(err, result) {
+  if(err) {
+    console.log(err);
+    return;
+  }//if
+
+  var delivery_order = result;
+
+  console.log(delivery_order);
+});//odoo.rpc_call
+
+
 ```
 
 ## Methods
@@ -103,6 +137,7 @@ odoo.browse_by_id('product.product', params, function (err, products) {
 * odoo.create(model, params, callback)
 * odoo.update(model, id, params, callback)
 * odoo.delete(model, id, callback)
+* odoo.rpc_call(endpoint, params, callback);
 
 ##Node version
 Works better with NodeJS v11.16 and further
