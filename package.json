@@ -1,6 +1,6 @@
 {
   "name": "odoo",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Node.js client library for Odoo using JSON-RPC",
   "main": "./lib/index.js",
   "directories": {
@@ -27,7 +27,8 @@
   },
   "homepage": "https://github.com/saidimu/odoo",
   "dependencies": {
-    "jayson": "^1.2.1"
+    "jayson": "^1.2.1",
+    "lodash": "^3.10.1"
   },
   "devDependencies": {
     "gulp": "^3.8.11",
