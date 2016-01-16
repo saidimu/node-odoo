@@ -1,7 +1,7 @@
 {
-  "name": "odoo",
-  "version": "0.4.0",
-  "description": "Node.js client library for Odoo using JSON-RPC",
+  "name": "react-native-odoo",
+  "version": "0.1.0",
+  "description": "React Native library for Odoo using JSON-RPC",
   "main": "./lib/index.js",
   "directories": {
     "test": "test"
@@ -14,25 +14,34 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/saidimu/odoo"
+    "url": "git+https://github.com/kevin3274/react-native-odoo.git"
   },
   "keywords": [
     "odoo",
-    "openepr",
+    "openerp",
     "jsonrpc"
+    "react-native"
   ],
-  "author": "Saidimu Apale <saidimu@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/saidimu/odoo/issues"
+  "author": {
+    "name": "Kevin Wang",
+    "email": "kevin_327@163.com"
   },
-  "homepage": "https://github.com/saidimu/odoo",
+  "bugs": {
+    "url": "https://github.com/kevin327/react-native-odoo/issues"
+  },
+  "homepage": "https://github.com/kevin3274/react-native-odoo",
   "dependencies": {
-    "jayson": "^1.2.1",
-    "lodash": "^3.10.1"
   },
   "devDependencies": {
     "gulp": "^3.8.11",
     "gulp-mocha": "^2.0.0",
     "sinon": "^1.12.2"
-  }
+  },
+  "maintainers": [
+    {
+      "name": "kevin3274",
+      "email": "kevin_327@163.com"
+    }
+  ],
+  "readme": "ERROR: No README data found!"
 }
