@@ -1,19 +1,19 @@
 # Odoo
 
-Node.js client library for Odoo
+React Native library for Odoo
 
 ## Installation
 
 ```bash
-$ npm install Odoo
+$ npm install react-native-odoo
 ```
 
 ## Usage
 
 ```js
-var Odoo = require('Odoo');
+import Odoo from 'odoo'
 
-var odoo = new Odoo({
+const odoo = new Odoo({
   host: 'localhost',
   port: 8069,
   database: 'demo',
